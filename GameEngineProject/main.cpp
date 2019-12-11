@@ -69,6 +69,7 @@ int main(int argc, char **argv)
 	list<SDL_Texture*> textTextures; // create a list of all textures
 	list<SDL_Rect> textRects;
 
+	//TODO: Find a way to do all of this is a function
 	//Create Title Text
 	SDL_Surface* textSurface = TTF_RenderText_Blended(titleFont, "Game Title", textColour);
 	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
@@ -100,11 +101,28 @@ int main(int argc, char **argv)
 	textTextures.push_back(leaderboardsTextTexture);
 	textRects.push_back(leaderboardsTextDest);
 
+	//Create How To Play Text
+	SDL_Surface* howToPlayTextSurface = TTF_RenderText_Blended(titleFont, "How To Play", textColour);
+	SDL_Texture* howToPlayTextTexture = SDL_CreateTextureFromSurface(renderer, howToPlayTextSurface);
+	SDL_FreeSurface(howToPlayTextSurface);
+	SDL_Rect howToPlayTextDest;
+	howToPlayTextDest.x = 570;
+	howToPlayTextDest.y = 200;
+
+	//Create Exit Text
+	SDL_Surface* exitTextSurface = TTF_RenderText_Blended(titleFont, "Exit", textColour);
+	SDL_Texture* exitTextTexture = SDL_CreateTextureFromSurface(renderer, exitTextSurface);
+	SDL_FreeSurface(exitTextSurface);
+	SDL_Rect exitTextDest;
+	exitTextDest.x = 570;
+	exitTextDest.y = 250;
+
 	//query for width and height
 	SDL_QueryTexture(textTexture, NULL, NULL, &titleTextDest.w, &titleTextDest.h);
 	SDL_QueryTexture(newGameTextTexture, NULL, NULL, &newGameTextDest.w, &newGameTextDest.h);
 	SDL_QueryTexture(leaderboardsTextTexture, NULL, NULL, &leaderboardsTextDest.w, &leaderboardsTextDest.h);
-	SDL_QueryTexture(leaderboardsTextTexture, NULL, NULL, &leaderboardsTextDest.w, &leaderboardsTextDest.h);
+	SDL_QueryTexture(howToPlayTextTexture, NULL, NULL, &howToPlayTextDest.w, &howToPlayTextDest.h);
+	SDL_QueryTexture(exitTextTexture, NULL, NULL, &exitTextDest.w, &exitTextDest.h);
 
 	//query for width and height
 	/*for each (SDL_Texture* textTexture in textTextures)
@@ -144,9 +162,13 @@ int main(int argc, char **argv)
 		}
 
 		//draw text on top layer
+		//TODO: Do this in a function using an array or smth
 		SDL_RenderCopy(renderer, textTexture, NULL, &titleTextDest);
 		SDL_RenderCopy(renderer, newGameTextTexture, NULL, &newGameTextDest);
-		
+		SDL_RenderCopy(renderer, leaderboardsTextTexture, NULL, &leaderboardsTextDest);
+		SDL_RenderCopy(renderer, howToPlayTextTexture, NULL, &howToPlayTextDest);
+		SDL_RenderCopy(renderer, exitTextTexture, NULL, &exitTextDest);
+
 		SDL_RenderPresent(renderer);
 	}
 
