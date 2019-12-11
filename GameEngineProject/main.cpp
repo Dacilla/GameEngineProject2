@@ -175,6 +175,10 @@ int main(int argc, char **argv)
 	//cleanup
 	TTF_CloseFont(titleFont);
 	SDL_DestroyTexture(textTexture);
+	SDL_DestroyTexture(newGameTextTexture);
+	SDL_DestroyTexture(leaderboardsTextTexture);
+	SDL_DestroyTexture(howToPlayTextTexture);
+	SDL_DestroyTexture(exitTextTexture);
 	SDL_Quit();
 
 	system("pause");
