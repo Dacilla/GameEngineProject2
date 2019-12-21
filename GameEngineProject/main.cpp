@@ -63,13 +63,16 @@ int main(int argc, char **argv)
 	}
 
 	//ASSETS
+	
+
 	//FONT
-	TTF_Font* titleFont = TTF_OpenFont("Assets/vermin_vibes_1989.ttf", 32);
-	SDL_Color textColour = { 123, 0, 34, 0 };
-	list<SDL_Texture*> textTextures; // create a list of all textures
+	TTF_Font* titleFont = TTF_OpenFont("Assets/ConcertOne-Regular.ttf", 42);
+	TTF_Font* menuTextFont = TTF_OpenFont("Assets/Comfortaa-VariableFont_wght.ttf", 24);
+	SDL_Color textColour = { 200, 200, 200, 0 };
+	list<SDL_Texture*> textTextures; // create a list of all textures, not in use now, but planning ahead
 	list<SDL_Rect> textRects;
 
-	//TODO: Find a way to do all of this is a function
+	//TODO: Find a way to do all of this in a function
 	//Create Title Text
 	SDL_Surface* textSurface = TTF_RenderText_Blended(titleFont, "Game Title", textColour);
 	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
@@ -82,40 +85,40 @@ int main(int argc, char **argv)
 	textRects.push_back(titleTextDest);
 
 	//Create New Game Text
-	SDL_Surface* newGametextSurface = TTF_RenderText_Blended(titleFont, "New Game", textColour);
+	SDL_Surface* newGametextSurface = TTF_RenderText_Blended(menuTextFont, "New Game", textColour);
 	SDL_Texture* newGameTextTexture = SDL_CreateTextureFromSurface(renderer, newGametextSurface);
 	SDL_FreeSurface(newGametextSurface);
 	SDL_Rect newGameTextDest;
 	newGameTextDest.x = 570;
-	newGameTextDest.y = 100;
+	newGameTextDest.y = 130;
 	textTextures.push_back(newGameTextTexture);
 	textRects.push_back(newGameTextDest);
 
 	//Create Leaderboards Text
-	SDL_Surface* leaderboardsTextSurface = TTF_RenderText_Blended(titleFont, "Leaderboards", textColour);
+	SDL_Surface* leaderboardsTextSurface = TTF_RenderText_Blended(menuTextFont, "Leaderboards", textColour);
 	SDL_Texture* leaderboardsTextTexture = SDL_CreateTextureFromSurface(renderer, leaderboardsTextSurface);
 	SDL_FreeSurface(leaderboardsTextSurface);
 	SDL_Rect leaderboardsTextDest;
 	leaderboardsTextDest.x = 570;
-	leaderboardsTextDest.y = 150;
+	leaderboardsTextDest.y = 180;
 	textTextures.push_back(leaderboardsTextTexture);
 	textRects.push_back(leaderboardsTextDest);
 
 	//Create How To Play Text
-	SDL_Surface* howToPlayTextSurface = TTF_RenderText_Blended(titleFont, "How To Play", textColour);
+	SDL_Surface* howToPlayTextSurface = TTF_RenderText_Blended(menuTextFont, "How To Play", textColour);
 	SDL_Texture* howToPlayTextTexture = SDL_CreateTextureFromSurface(renderer, howToPlayTextSurface);
 	SDL_FreeSurface(howToPlayTextSurface);
 	SDL_Rect howToPlayTextDest;
 	howToPlayTextDest.x = 570;
-	howToPlayTextDest.y = 200;
+	howToPlayTextDest.y = 230;
 
 	//Create Exit Text
-	SDL_Surface* exitTextSurface = TTF_RenderText_Blended(titleFont, "Exit", textColour);
+	SDL_Surface* exitTextSurface = TTF_RenderText_Blended(menuTextFont, "Exit", textColour);
 	SDL_Texture* exitTextTexture = SDL_CreateTextureFromSurface(renderer, exitTextSurface);
 	SDL_FreeSurface(exitTextSurface);
 	SDL_Rect exitTextDest;
 	exitTextDest.x = 570;
-	exitTextDest.y = 250;
+	exitTextDest.y = 280;
 
 	//query for width and height
 	SDL_QueryTexture(textTexture, NULL, NULL, &titleTextDest.w, &titleTextDest.h);
@@ -123,6 +126,13 @@ int main(int argc, char **argv)
 	SDL_QueryTexture(leaderboardsTextTexture, NULL, NULL, &leaderboardsTextDest.w, &leaderboardsTextDest.h);
 	SDL_QueryTexture(howToPlayTextTexture, NULL, NULL, &howToPlayTextDest.w, &howToPlayTextDest.h);
 	SDL_QueryTexture(exitTextTexture, NULL, NULL, &exitTextDest.w, &exitTextDest.h);
+
+	//Create background
+	SDL_Texture* backgroundTexture = IMG_LoadTexture(renderer, "Assets/background.png");
+	SDL_Rect backgroundRect;
+	SDL_QueryTexture(backgroundTexture, NULL, NULL, &backgroundRect.w, &backgroundRect.h);
+	backgroundRect.x = 0;
+	backgroundRect.y = 0;
 
 	//query for width and height
 	/*for each (SDL_Texture* textTexture in textTextures)
@@ -161,6 +171,14 @@ int main(int argc, char **argv)
 			}
 		}
 
+		//draw background
+		SDL_RenderCopy(renderer, backgroundTexture, NULL, &backgroundRect);
+
+		//FONT BACKGROUND - I want to make the text have outlines but can't find how to do that, so this is a cheap and easy workaround for now
+		SDL_Rect textBack = { 535, 55, 260, 300 }; // rough estimate of pixel positions using paint
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		SDL_RenderFillRect(renderer, &textBack);
+
 		//draw text on top layer
 		//TODO: Do this in a function using an array or smth
 		SDL_RenderCopy(renderer, textTexture, NULL, &titleTextDest);
@@ -179,6 +197,7 @@ int main(int argc, char **argv)
 	SDL_DestroyTexture(leaderboardsTextTexture);
 	SDL_DestroyTexture(howToPlayTextTexture);
 	SDL_DestroyTexture(exitTextTexture);
+	SDL_DestroyTexture(backgroundTexture);
 	SDL_Quit();
 
 	system("pause");

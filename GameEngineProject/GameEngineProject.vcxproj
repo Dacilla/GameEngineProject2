@@ -69,7 +69,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MouseHandler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="MouseHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
