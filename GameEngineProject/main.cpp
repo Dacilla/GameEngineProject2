@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 
 	//params:
 	//	window title, x and y pos, width, height, flags for creation
-	SDL_Window* window = SDL_CreateWindow("My Awesome Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN); // |SDL_WINDOW_FULLSCREEN
+	SDL_Window* window = SDL_CreateWindow("Zombie Hunter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN); // |SDL_WINDOW_FULLSCREEN
 
 	if (window != NULL){
 		cout << "Window created" << endl;
@@ -74,7 +74,7 @@ int main(int argc, char **argv)
 
 	//TODO: Find a way to do all of this in a function
 	//Create Title Text
-	SDL_Surface* textSurface = TTF_RenderText_Blended(titleFont, "Game Title", textColour);
+	SDL_Surface* textSurface = TTF_RenderText_Blended(titleFont, "Zombie Hunter", textColour);
 	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 	SDL_FreeSurface(textSurface);
 	textTextures.push_back(textTexture);
@@ -175,7 +175,7 @@ int main(int argc, char **argv)
 		SDL_RenderCopy(renderer, backgroundTexture, NULL, &backgroundRect);
 
 		//FONT BACKGROUND - I want to make the text have outlines but can't find how to do that, so this is a cheap and easy workaround for now
-		SDL_Rect textBack = { 535, 55, 260, 300 }; // rough estimate of pixel positions using paint
+		SDL_Rect textBack = { 535, 55, 350, 300 }; // rough estimate of pixel positions using paint
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		SDL_RenderFillRect(renderer, &textBack);
 
