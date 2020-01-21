@@ -4,6 +4,14 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <list>
+#include "Globals.h"
+#include "InputHandler.h"
+#include "KeyboardHandler.h"
+#include "MouseHandler.h"
+#include "gameControllerHandler.h"
+#include "Animation.h"
+#include "GameObject.h"
+#include "Vector.h"
 
 using namespace std;
 
@@ -40,7 +48,7 @@ int main(int argc, char **argv)
 
 	//params:
 	//	window title, x and y pos, width, height, flags for creation
-	SDL_Window* window = SDL_CreateWindow("Zombie Hunter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN); // |SDL_WINDOW_FULLSCREEN
+	SDL_Window* window = SDL_CreateWindow("Zombie Hunter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Globals::screenWidth, Globals::screenHeight, SDL_WINDOW_SHOWN); // |SDL_WINDOW_FULLSCREEN
 
 	if (window != NULL){
 		cout << "Window created" << endl;
@@ -61,6 +69,9 @@ int main(int argc, char **argv)
 		SDL_Quit();
 		return -5;
 	}
+
+	Globals::window = window;
+	Globals::renderer = renderer;
 
 	//ASSETS
 	
@@ -134,6 +145,16 @@ int main(int argc, char **argv)
 	backgroundRect.x = 0;
 	backgroundRect.y = 0;
 
+	//Create selector
+	//SDL_Surface* selectorSurface = IMG_LoadTexture(renderer, "Assets/)
+
+	//INPUT HANDLERS
+	KeyboardHandler keyboardHandler;
+
+	MouseHandler mouseHandler;
+
+	GameControllerHandler gameControllerHandler;
+
 	//query for width and height
 	/*for each (SDL_Texture* textTexture in textTextures)
 	{
@@ -167,6 +188,10 @@ int main(int argc, char **argv)
 				if (e.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
 				{
 					loop = false;
+				}
+				if (e.key.keysym.scancode == SDL_SCANCODE_DOWN)
+				{
+
 				}
 			}
 		}
