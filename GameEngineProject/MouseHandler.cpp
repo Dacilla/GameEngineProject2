@@ -20,8 +20,8 @@ void MouseHandler::update(SDL_Event* event)
 	}*/
 
 	//check if user has clicked on exit
-	if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == SDL_BUTTON_LEFT)
+	/*if (event->type == SDL_MOUSEBUTTONDOWN && event->button.button == SDL_BUTTON_LEFT)
 	{
 		if (event->button.x >= exit)
-	}
+	}*/
 }

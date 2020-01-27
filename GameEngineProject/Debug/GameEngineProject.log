@@ -1,19 +1,12 @@
-﻿Build started 21/01/2020 10:58:23 AM.
+﻿Build started 28/01/2020 9:57:01 AM.
      1>Project "d:\Users\7246\Downloads\GameEngineProject2-master\GameEngineProject\GameEngineProject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp gameControllerHandler.cpp GameObject.cpp main.cpp Vector.cpp
-         Vector.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>d:\users\7246\downloads\gameengineproject2-master\gameengineproject\main.cpp(170): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-         GameObject.cpp
-     1>d:\users\7246\downloads\gameengineproject2-master\gameengineproject\gameobject.cpp(46): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>d:\users\7246\downloads\gameengineproject2-master\gameengineproject\gameobject.cpp(47): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-         gameControllerHandler.cpp
-         Animation.cpp
-     1>d:\users\7246\downloads\gameengineproject2-master\gameengineproject\animation.cpp(64): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-         Generating Code...
+     1>d:\users\7246\downloads\gameengineproject2-master\gameengineproject\main.cpp(224): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"d:\Users\7246\Downloads\GameEngineProject2-master\Debug\GameEngineProject.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib SDL2_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"d:\Users\7246\Downloads\GameEngineProject2-master\Debug\GameEngineProject.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"d:\Users\7246\Downloads\GameEngineProject2-master\Debug\GameEngineProject.lib" /MACHINE:X86 Debug\Animation.obj
+         Debug\Bullet.obj
          Debug\gameControllerHandler.obj
          Debug\GameObject.obj
          Debug\Globals.obj
@@ -21,11 +14,18 @@
          Debug\KeyboardHandler.obj
          Debug\main.obj
          Debug\MouseHandler.obj
+         Debug\Player.obj
+         Debug\SoundManager.obj
          Debug\Vector.obj
+         Debug\Wall.obj
      1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
-         GameEngineProject.vcxproj -> d:\Users\7246\Downloads\GameEngineProject2-master\Debug\GameEngineProject.exe
-     1>Done Building Project "d:\Users\7246\Downloads\GameEngineProject2-master\GameEngineProject\GameEngineProject.vcxproj" (Build target(s)).
+     1>main.obj : error LNK2019: unresolved external symbol _Mix_OpenAudio referenced in function _SDL_main
+     1>SoundManager.obj : error LNK2019: unresolved external symbol _Mix_LoadWAV_RW referenced in function "public: void __thiscall SoundManager::loadSound(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?loadSound@SoundManager@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z)
+     1>SoundManager.obj : error LNK2019: unresolved external symbol _Mix_FreeChunk referenced in function "public: __thiscall SoundManager::~SoundManager(void)" (??1SoundManager@@QAE@XZ)
+     1>SoundManager.obj : error LNK2019: unresolved external symbol _Mix_PlayChannelTimed referenced in function "public: void __thiscall SoundManager::playSound(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?playSound@SoundManager@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+     1>d:\Users\7246\Downloads\GameEngineProject2-master\Debug\GameEngineProject.exe : fatal error LNK1120: 4 unresolved externals
+     1>Done Building Project "d:\Users\7246\Downloads\GameEngineProject2-master\GameEngineProject\GameEngineProject.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.38
+Time Elapsed 00:00:00.94

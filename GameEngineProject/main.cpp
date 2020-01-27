@@ -3,7 +3,10 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 #include <list>
+#include <stdlib.h>
+#include <time.h>
 #include "Globals.h"
 #include "InputHandler.h"
 #include "KeyboardHandler.h"
@@ -12,6 +15,10 @@
 #include "Animation.h"
 #include "GameObject.h"
 #include "Vector.h"
+#include "Bullet.h"
+#include "Player.h"
+#include "SoundManager.h"
+#include "Wall.h"
 
 using namespace std;
 
@@ -46,6 +53,15 @@ int main(int argc, char **argv)
 		return -3;
 	}
 
+	//mixer init
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+	{
+		cout << "mixer error: " << Mix_GetError() << endl;
+		system("pause");
+		SDL_Quit();
+		return -4;
+	}
+
 	//params:
 	//	window title, x and y pos, width, height, flags for creation
 	SDL_Window* window = SDL_CreateWindow("Zombie Hunter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, Globals::screenWidth, Globals::screenHeight, SDL_WINDOW_SHOWN); // |SDL_WINDOW_FULLSCREEN
@@ -73,8 +89,46 @@ int main(int argc, char **argv)
 	Globals::window = window;
 	Globals::renderer = renderer;
 
+	//setup game objects list
+	list<GameObject*> gameObjects;
+	//give list reference to game objects static variable
+	GameObject::gameObjects = &gameObjects;
+
 	//ASSETS
 	
+
+	//walls
+	Wall* topWall = new Wall();
+	topWall->renderer = Globals::renderer;
+	topWall->pos.x = 0; 
+	topWall->pos.y = 0;
+	topWall->w = 1000;
+	topWall->h = 32;
+	gameObjects.push_back(topWall);
+
+	Wall* leftWall = new Wall();
+	leftWall->renderer = Globals::renderer;
+	leftWall->pos.x = 0;
+	leftWall->pos.y = 0;
+	leftWall->w = 32;
+	leftWall->h = 1000;
+	gameObjects.push_back(leftWall);
+
+	Wall* rightWall = new Wall();
+	rightWall->renderer = Globals::renderer;
+	rightWall->pos.x = 1000;
+	rightWall->pos.y = 0;
+	rightWall->w = 32;
+	rightWall->h = 1000;
+	gameObjects.push_back(rightWall);
+
+	Wall* bottomWall = new Wall();
+	rightWall->renderer = Globals::renderer;
+	rightWall->pos.x = 0;
+	rightWall->pos.y = 1000;
+	rightWall->w = 1000;
+	rightWall->h = 32;
+	gameObjects.push_back(bottomWall);
 
 	//FONT
 	TTF_Font* titleFont = TTF_OpenFont("Assets/ConcertOne-Regular.ttf", 42);

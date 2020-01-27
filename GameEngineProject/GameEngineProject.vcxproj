@@ -70,6 +70,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="gameControllerHandler.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Globals.cpp" />
@@ -77,17 +78,24 @@
     <ClCompile Include="KeyboardHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MouseHandler.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="gameControllerHandler.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="KeyboardHandler.h" />
     <ClInclude Include="MouseHandler.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
