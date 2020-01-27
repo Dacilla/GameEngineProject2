@@ -13,7 +13,7 @@ GameStateMachine::~GameStateMachine()
 void GameStateMachine::push(GameState* state)
 {
 	gameStates.push_back(state); // add state to top of stack
-	gameStates.back()->onEnter; // run OnEnter on newly active state
+	gameStates.back()->onEnter(); // run OnEnter on newly active state
 }
 
 void GameStateMachine::pop()
