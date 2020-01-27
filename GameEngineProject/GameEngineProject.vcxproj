@@ -73,6 +73,8 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="gameControllerHandler.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="KeyboardHandler.cpp" />
@@ -88,6 +90,8 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="gameControllerHandler.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="KeyboardHandler.h" />
