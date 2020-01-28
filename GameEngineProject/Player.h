@@ -11,6 +11,9 @@ public:
 	Animation* animation;
 	bool faceRight;
 
+	int health;
+	int ammo;
+
 	Player();
 	~Player();
 

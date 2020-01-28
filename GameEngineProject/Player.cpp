@@ -6,6 +6,8 @@ Player::Player()
 	animation = NULL;
 	faceRight = true;
 	type = "player";
+	health = 10;
+	ammo = 30;
 }
 
 
@@ -44,14 +46,24 @@ void Player::draw()
 
 void Player::shoot()
 {
-	SoundManager::soundManager.playSound("explode");
+	//TODO: ADD AMMO FUNCTIONALITY
+	if (ammo > 0)
+	{
+		SoundManager::soundManager.playSound("explode");
 
-	Bullet* bullet = new Bullet();
-	bullet->renderer = renderer;
-	bullet->setPosition(pos);
-	bullet->angle = rand() % 360;//rand gives random int between min and max int value, modulus it into 360 degree value
-	bullet->movementSpeed = 200;
+		Bullet* bullet = new Bullet();
+		bullet->renderer = renderer;
+		bullet->setPosition(pos);
+		bullet->angle = rand() % 360;//rand gives random int between min and max int value, modulus it into 360 degree value
+		bullet->movementSpeed = 200;
 
-	//add to gameObjects list
-	GameObject::gameObjects->push_back(bullet);
+		//add to gameObjects list
+		GameObject::gameObjects->push_back(bullet);
+		ammo--;
+	}
+	else
+	{
+		
+	}
+
 }

@@ -71,11 +71,14 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="ChaseGameState.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="gameControllerHandler.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="IdleGameState.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="KeyboardHandler.cpp" />
     <ClCompile Include="main.cpp" />
@@ -88,11 +91,14 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="ChaseGameState.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="gameControllerHandler.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="IdleGameState.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="KeyboardHandler.h" />
     <ClInclude Include="MouseHandler.h" />
