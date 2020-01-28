@@ -7,3 +7,15 @@ int Globals::screenWidth = 1280;
 int Globals::screenHeight = 720;
 SDL_Rect Globals::camera = { 0, 0, Globals::screenWidth, Globals::screenHeight };
 int Globals::currentState = 0;
+
+void Globals::spawnEnemy()
+{
+	Enemy* enemy = new Enemy();
+	enemy->renderer = Globals::renderer;
+	enemy->setPosition()
+}
+
+void Globals::setEnemySpawnPoint()
+{
+
+}

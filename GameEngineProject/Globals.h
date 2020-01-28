@@ -1,5 +1,7 @@
 #pragma once
 #include <SDL.h>
+#include "Enemy.h"
+
 class Globals
 {
 public:
@@ -13,5 +15,8 @@ public:
 
 	//current game state (main menu = 0, playing = 1, how to play = 2 etc)
 	static int currentState;
+
+	void spawnEnemy();
+	void setEnemySpawnPoint();
 };
 
